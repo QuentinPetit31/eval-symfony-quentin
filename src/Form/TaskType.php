@@ -3,10 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Task;
-use Doctrine\DBAL\Types\DateTimeImmutableType as TypesDateTimeImmutableType;
-use Doctrine\DBAL\Types\DateTimeTzImmutableType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeImmutableType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,10 +17,10 @@ class TaskType extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            ->add('createdAt', TypesDateTimeImmutableType::class, [
+            ->add('createdAt', DateTimeType::class, [
                 'widget' => 'single_text',
             ])
-            ->add('expiredAt', DateTimeTzImmutableType::class, [
+            ->add('expiredAt', DateTimeType::class, [
                 'widget' => 'single_text',
             ]);
     }
